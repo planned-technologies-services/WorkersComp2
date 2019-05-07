@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Site" conflictDetection="overwriteChanges" label="Site" plugIn="Planned.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Site"."siteid" "Siteid"
+	,"Site"."jobno" "Jobno"
+	,"Site"."jobstatus" "Jobstatus"
+	,"Site"."jobtype" "Jobtype"
+	,"Site"."sitetype" "Sitetype"
+	,"Site"."managerid" "Managerid"
+	,"Site"."regionid" "Regionid"
+	,"Site"."ardivision_no" "ArdivisionNo"
+	,"Site"."customer_no" "CustomerNo"
+	,"Site"."company_code" "CompanyCode"
+	,"Site"."site_name" "SiteName"
+	,"Site"."file_as" "FileAs"
+	,"Site"."timesheet_status" "TimesheetStatus"
+	,"Site"."propertymanagementid" "Propertymanagementid"
+	,"Site"."address1" "Address1"
+	,"Site"."address2" "Address2"
+	,"Site"."address3" "Address3"
+	,"Site"."city" "City"
+	,"Site"."zipcode" "Zipcode"
+	,"Site"."country_code" "CountryCode"
+	,"Site"."city_section" "CitySection"
+	,"Site"."citytaxcode" "Citytaxcode"
+	,"Site"."address2_validated" "Address2Validated"
+	,"Site"."phone" "Phone"
+	,"Site"."phone_ext" "PhoneExt"
+	,"Site"."fax" "Fax"
+	,"Site"."primary_email_address" "PrimaryEmailAddress"
+	,"Site"."website" "Website"
+	,"Site"."isUnion" "IsUnion"
+	,"Site"."vendorid_default" "VendoridDefault"
+	,"Site"."isSpecialProject" "IsSpecialProject"
+	,"Site"."isStandby" "IsStandby"
+	,"Site"."isholidayOTallowed" "IsholidayOtallowed"
+	,"Site"."timezone_differential" "TimezoneDifferential"
+	,"Site"."sitebreakruleid" "Sitebreakruleid"
+	,"Site"."map_longitude_coordinate" "MapLongitudeCoordinate"
+	,"Site"."map_latitude_coordinate" "MapLatitudeCoordinate"
+	,"Site"."state" "State"
+from "dbo"."Site" "Site"
+]]></text>
+    </command>
+    <command id="siteidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Siteid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Siteid" type="Int32" allowNulls="false" isPrimaryKey="true" label="Siteid" readOnly="true" />
+    <field name="Jobno" type="String" label="Jobno" length="7" showInSummary="true" />
+    <field name="Jobstatus" type="String" label="Jobstatus" length="1" showInSummary="true" />
+    <field name="CompanyCode" type="String" label="Company Code" length="3" />
+    <field name="SiteName" type="String" label="Site Name" length="30" />
+    <field name="TimesheetStatus" type="String" label="Timesheet Status" length="1" />
+    <field name="State" type="String" label="State" length="2" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Site">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CompanyCode" columns="3" />
+        <dataField fieldName="SiteName" columns="30" />
+        <dataField fieldName="Jobno" columns="7" />
+        <dataField fieldName="Jobstatus" columns="1" hidden="true" />
+        <dataField fieldName="TimesheetStatus" columns="1" hidden="true" />
+        <dataField fieldName="State" columns="2" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" />
+      <action id="a2" commandName="Edit" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form" flat="false">
+      <action id="a1" commandName="Edit" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" commandName="Select" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

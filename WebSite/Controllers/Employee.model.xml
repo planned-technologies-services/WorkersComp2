@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Employee" alias="Employee" created="2017-06-16T09:46:26" modified="2017-06-16T10:57:55" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="employeeid" fieldName="Employeeid" label="Employeeid" />
+    <column name="ultipro_employeeid" fieldName="UltiproEmployeeid" label="Ultipro Employeeid" />
+    <column name="company_code" fieldName="CompanyCode" label="Company Code" />
+    <column name="site_code" fieldName="SiteCode" label="Site Code" />
+    <column name="filenumber" fieldName="Filenumber" label="Filenumber" />
+    <column name="first_name" fieldName="FirstName" label="First Name" />
+    <column name="last_name" fieldName="LastName" label="Last Name" />
+    <column name="union_status" fieldName="UnionStatus" label="Union Status" />
+    <column name="position_code" fieldName="PositionCode" label="Position Code" />
+    <column name="position" fieldName="Position" label="Position" />
+    <column name="address1" fieldName="Address1" label="Address1" />
+    <column name="address2" fieldName="Address2" label="Address2" />
+    <column name="city" fieldName="City" label="City" />
+    <column name="state" fieldName="State" label="State" />
+    <column name="zipcode" fieldName="Zipcode" label="Zipcode" />
+    <column name="phone_home" fieldName="PhoneHome" label="Phone Home" />
+    <column name="phone_mobile" fieldName="PhoneMobile" label="Phone Mobile" />
+    <column name="email" fieldName="Email" label="Email" />
+    <column name="gender" fieldName="Gender" label="Gender" />
+    <column name="homedept" fieldName="Homedept" label="Homedept" />
+    <column name="rate1amt" fieldName="Rate1amt" label="Rate1amt" />
+    <column name="birthdate" fieldName="Birthdate" label="Birthdate" format="g" />
+    <column name="hire_date" fieldName="HireDate" label="Hire Date" format="g" />
+    <column name="seniority_date" fieldName="SeniorityDate" label="Seniority Date" format="g" />
+    <column name="ultipro_updated_date" fieldName="UltiproUpdatedDate" label="Ultipro Updated Date" format="g" />
+    <column name="federal_id" fieldName="FederalID" label="Federal Id" />
+    <column name="employment_status" fieldName="EmploymentStatus" label="Employment Status" />
+  </columns>
+</dataModel>

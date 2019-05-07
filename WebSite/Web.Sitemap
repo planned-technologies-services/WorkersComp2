@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="^SiteHome^Home^SiteHome^" description="" url="~/index.html">
+    <siteMapNode title="^HomePath^Home^HomePath^" description="^HomeDesc^Application home page^HomeDesc^" url="~/pages/home" cssClass="Wide" />
+    <siteMapNode title="Workers Comp" description="View Workerscomp" url="~/pages/form-hr-workerscomp" />
+    <siteMapNode title="Site Content" description="View Site Content" url="~/pages/site-content" />
+  </siteMapNode>
+</siteMap>

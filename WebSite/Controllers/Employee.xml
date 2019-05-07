@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Employee" conflictDetection="overwriteChanges" label="Employee" plugIn="Planned.Data.AnnotationPlugIn" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Employee"."employeeid" "Employeeid"
+	,"Employee"."ultipro_employeeid" "UltiproEmployeeid"
+	,"Employee"."company_code" "CompanyCode"
+	,"Employee"."site_code" "SiteCode"
+	,"Employee"."filenumber" "Filenumber"
+	,"Employee"."first_name" "FirstName"
+	,"Employee"."last_name" "LastName"
+	,"Employee"."union_status" "UnionStatus"
+	,"Employee"."position_code" "PositionCode"
+	,"Employee"."position" "Position"
+	,"Employee"."address1" "Address1"
+	,"Employee"."address2" "Address2"
+	,"Employee"."city" "City"
+	,"Employee"."state" "State"
+	,"Employee"."zipcode" "Zipcode"
+	,"Employee"."phone_home" "PhoneHome"
+	,"Employee"."phone_mobile" "PhoneMobile"
+	,"Employee"."email" "Email"
+	,"Employee"."gender" "Gender"
+	,"Employee"."homedept" "Homedept"
+	,"Employee"."rate1amt" "Rate1amt"
+	,"Employee"."birthdate" "Birthdate"
+	,"Employee"."hire_date" "HireDate"
+	,"Employee"."seniority_date" "SeniorityDate"
+	,"Employee"."ultipro_updated_date" "UltiproUpdatedDate"
+	,"Employee"."federal_id" "FederalID"
+	,"Employee"."employment_status" "EmploymentStatus"
+from "dbo"."Employee" "Employee"
+]]></text>
+    </command>
+    <command id="employeeidIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="Employeeid" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="Employeeid" type="Int32" allowNulls="false" isPrimaryKey="true" label="Employeeid" readOnly="true" />
+    <field name="UltiproEmployeeid" type="String" label="Ultipro Employeeid" length="12" showInSummary="true" />
+    <field name="CompanyCode" type="String" label="Company Code" length="50" showInSummary="true" />
+    <field name="SiteCode" type="String" label="Site Code" length="3" showInSummary="true" />
+    <field name="Filenumber" type="String" label="Filenumber" length="7" showInSummary="true" />
+    <field name="FirstName" type="String" label="First Name" length="30" showInSummary="true" />
+    <field name="LastName" type="String" label="Last Name" length="30" />
+    <field name="UnionStatus" type="String" label="Union Status" length="10" />
+    <field name="PositionCode" type="String" label="Position Code" length="8" />
+    <field name="Position" type="String" label="Position" length="65" />
+    <field name="Address1" type="String" label="Address1" length="30" />
+    <field name="Address2" type="String" label="Address2" length="30" />
+    <field name="City" type="String" label="City" length="30" />
+    <field name="State" type="String" label="State" length="2" />
+    <field name="Zipcode" type="String" label="Zipcode" length="10" />
+    <field name="PhoneHome" type="String" label="Phone Home" length="20" />
+    <field name="PhoneMobile" type="String" label="Phone Mobile" length="20" />
+    <field name="Email" type="String" label="Email" length="60" />
+    <field name="Gender" type="String" label="Gender" length="1" />
+    <field name="Homedept" type="String" label="Homedept" length="7" />
+    <field name="Rate1amt" type="Decimal" label="Rate1amt" />
+    <field name="Birthdate" type="DateTime" dataFormatString="g" label="Birthdate" />
+    <field name="HireDate" type="DateTime" dataFormatString="g" label="Hire Date" />
+    <field name="SeniorityDate" type="DateTime" dataFormatString="g" label="Seniority Date" />
+    <field name="UltiproUpdatedDate" type="DateTime" dataFormatString="g" label="Ultipro Updated Date" />
+    <field name="FederalID" type="String" label="Federal Id" length="12" />
+    <field name="EmploymentStatus" type="String" label="Employment Status" length="1" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Employee">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="CompanyCode" columns="50" />
+        <dataField fieldName="SiteCode" columns="3" />
+        <dataField fieldName="Filenumber" columns="7" />
+        <dataField fieldName="FirstName" columns="30" />
+        <dataField fieldName="LastName" columns="30" />
+        <dataField fieldName="UnionStatus" columns="10" />
+        <dataField fieldName="PositionCode" columns="8" />
+        <dataField fieldName="Position" />
+        <dataField fieldName="Address1" columns="30" />
+        <dataField fieldName="Address2" columns="30" />
+        <dataField fieldName="City" columns="30" />
+        <dataField fieldName="State" columns="2" />
+        <dataField fieldName="Zipcode" columns="10" />
+        <dataField fieldName="PhoneHome" columns="20" />
+        <dataField fieldName="PhoneMobile" columns="20" />
+        <dataField fieldName="Email" />
+        <dataField fieldName="Gender" columns="1" />
+        <dataField fieldName="Homedept" columns="7" />
+        <dataField fieldName="Rate1amt" columns="15" />
+      </dataFields>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" commandName="Select" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

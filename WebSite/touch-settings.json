@@ -1,0 +1,7 @@
+﻿{
+  "membership": {
+    "accountManager": {
+      "enabled": false
+    }
+  }
+}
